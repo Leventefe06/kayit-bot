@@ -1,11 +1,12 @@
+// keep_alive.js
 const express = require('express');
 const app = express();
+const PORT = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Bot aktif 🚀');
+  res.send('Discord Bot Aktif!');
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Keep alive server çalışıyor. Port: ${port}`);
+app.listen(PORT, () => {
+  console.log(`Keep-Alive sunucusu ${PORT} portunda çalışıyor.`);
 });
