@@ -1,5 +1,5 @@
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ 
+const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -7,21 +7,15 @@ const client = new Client({
   ]
 });
 
-// MongoDB bağlantısı (örnek)
-const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB bağlandı!'))
-  .catch(err => console.error('MongoDB hatası:', err));
-
 client.on('ready', () => {
-  console.log(`${client.user.tag} çalışıyor!`);
+  console.log(`Bot aktif: ${client.user.tag}`);
 });
 
 client.on('messageCreate', async (message) => {
-  if (message.content.startsWith('.kayıt')) {
-    // Kayıt işlemleri burada
+  if (message.content === "!merhaba") {
+    message.reply("Selam! Ben çalışıyorum 🎉");
   }
 });
 
-client.login(process.env.TOKEN);
-require('./keep_alive'); // Replit 7/24 aktif tutma
+client.login(process.env.TOKEN); // Token'i Replit Secrets'a ekleyin
+require('./keep_alive'); // keep_alive.js'i çalıştırır
