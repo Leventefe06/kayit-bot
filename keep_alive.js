@@ -1,12 +1,7 @@
-// keep_alive.js
-const express = require('express');
-const app = express();
-const PORT = 3000;
-
-app.get('/', (req, res) => {
-  res.send('Discord Bot Aktif!');
+// Replit'te botun uykuya geçmesini engeller
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end("Bot aktif!");
 });
-
-app.listen(PORT, () => {
-  console.log(`Keep-Alive sunucusu ${PORT} portunda çalışıyor.`);
-});
+server.listen(3000);
